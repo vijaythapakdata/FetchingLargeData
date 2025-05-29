@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "handling-large-data-client-side-solution",
+    "id": "9358f025-dae2-4be6-972d-74799975eed8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "HandlingLargeData description"
+      },
+      "longDescription": {
+        "default": "HandlingLargeData description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "handling-large-data Feature",
+        "description": "The feature that activates elements of the handling-large-data solution.",
+        "id": "8fd485b7-ce20-470f-8eeb-4b212fe7eabe",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/handling-large-data.sppkg"
+  }
+}
