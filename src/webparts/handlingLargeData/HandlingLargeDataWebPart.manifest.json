@@ -22,7 +22,7 @@
     "description": { "default": "HandlingLargeData description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "HandlingLargeData"
+      "ListName": ""
     }
   }]
 }
