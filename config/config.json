@@ -9,10 +9,19 @@
           "manifest": "./src/webparts/handlingLargeData/HandlingLargeDataWebPart.manifest.json"
         }
       ]
+    },
+    "paginated-table-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/paginatedTable/PaginatedTableWebPart.js",
+          "manifest": "./src/webparts/paginatedTable/PaginatedTableWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "HandlingLargeDataWebPartStrings": "lib/webparts/handlingLargeData/loc/{locale}.js"
+    "HandlingLargeDataWebPartStrings": "lib/webparts/handlingLargeData/loc/{locale}.js",
+    "PaginatedTableWebPartStrings": "lib/webparts/paginatedTable/loc/{locale}.js"
   }
 }
