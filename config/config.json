@@ -17,11 +17,29 @@
           "manifest": "./src/webparts/paginatedTable/PaginatedTableWebPart.manifest.json"
         }
       ]
+    },
+    "graph-a-pi-profile-card-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphAPiProfileCard/GraphAPiProfileCardWebPart.js",
+          "manifest": "./src/webparts/graphAPiProfileCard/GraphAPiProfileCardWebPart.manifest.json"
+        }
+      ]
+    },
+    "hello-world-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/helloWorld/HelloWorldWebPart.js",
+          "manifest": "./src/webparts/helloWorld/HelloWorldWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "HandlingLargeDataWebPartStrings": "lib/webparts/handlingLargeData/loc/{locale}.js",
-    "PaginatedTableWebPartStrings": "lib/webparts/paginatedTable/loc/{locale}.js"
+    "PaginatedTableWebPartStrings": "lib/webparts/paginatedTable/loc/{locale}.js",
+    "GraphAPiProfileCardWebPartStrings": "lib/webparts/graphAPiProfileCard/loc/{locale}.js",
+    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js"
   }
 }
