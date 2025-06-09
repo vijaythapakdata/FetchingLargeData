@@ -33,6 +33,22 @@
           "manifest": "./src/webparts/helloWorld/HelloWorldWebPart.manifest.json"
         }
       ]
+    },
+    "get-allusers-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/getAllusers/GetAllusersWebPart.js",
+          "manifest": "./src/webparts/getAllusers/GetAllusersWebPart.manifest.json"
+        }
+      ]
+    },
+    "get-events-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/getEvents/GetEventsWebPart.js",
+          "manifest": "./src/webparts/getEvents/GetEventsWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
@@ -40,6 +56,8 @@
     "HandlingLargeDataWebPartStrings": "lib/webparts/handlingLargeData/loc/{locale}.js",
     "PaginatedTableWebPartStrings": "lib/webparts/paginatedTable/loc/{locale}.js",
     "GraphAPiProfileCardWebPartStrings": "lib/webparts/graphAPiProfileCard/loc/{locale}.js",
-    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js"
+    "HelloWorldWebPartStrings": "lib/webparts/helloWorld/loc/{locale}.js",
+    "GetAllusersWebPartStrings": "lib/webparts/getAllusers/loc/{locale}.js",
+    "GetEventsWebPartStrings": "lib/webparts/getEvents/loc/{locale}.js"
   }
 }
