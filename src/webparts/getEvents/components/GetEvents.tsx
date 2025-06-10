@@ -4,7 +4,7 @@ import type { IGetEventsProps } from './IGetEventsProps';
 import "@pnp/graph/users";
 import "@pnp/graph/calendars";
 import {SPFx,graphfi} from "@pnp/graph";
-import { ContentType } from '@pnp/sp/content-types';
+// import { ContentType } from '@pnp/sp/content-types';
 
 interface IEvent{
   subject:string;
@@ -22,14 +22,27 @@ const GetEvents:React.FC<IGetEventsProps>=(props)=>{
 
    const _getMyEvents=async()=>{
     const graph=graphfi().using(SPFx(props.context));
-    const events=await graph.users.getById(props.context.pageContext.user.email).events();
-    setMyEvents(events);
+    // const rawevents=await graph.users.getById(props.context.pageContext.user.email).events();
+      const rawevents=await graph.me.calendar.events();
+    const cleanedEvents:IEvent[]=rawevents.map(ev=>({
+      subject:ev.subject??'No Subject',
+      webLink:ev.webLink??'',
+      start:{
+        dateTime:ev.end?.dateTime??''
+      },
+      end:{
+         dateTime:ev.end?.dateTime??''
+      }
+    }));
+    setMyEvents(cleanedEvents);
     setLoading(false);
-    console.log(events);
+    console.log(cleanedEvents);
    };
    const createEvents=async()=>{
+    try{
     const graph=graphfi().using(SPFx(props.context));
     const eventsName=prompt("Enter event name");
+    if(!eventsName) return;
     const eventDate:any={
       subject:eventsName,
       body:{
@@ -52,11 +65,44 @@ const GetEvents:React.FC<IGetEventsProps>=(props)=>{
     await graph.users.getById(props.context.pageContext.user.email).calendar.events.add(eventDate);
     _getMyEvents();
   }
+  catch(err){
+    console.error(err);
+    alert('err');
+  }
+  }
   React.useEffect(()=>{
     _getMyEvents();
   },[]);
   return(
-    <></>
+    <>
+ <div>
+  <button onClick={createEvents}>Create Event</button>
+  {loading?(
+    <p>
+      Loading Events ...
+
+      
+    </p>
+  ):(
+
+    <ul>
+      {myEvents.map((event,index)=>(
+        <li key={index}>
+          <strong>{event.subject}</strong>
+          <br/>
+          <a href={event.webLink} target='_blank' rel='noopener noreferrer'>view Event</a>
+          <br/>
+          Start:{event.start.dateTime}<br/>
+          End:{event.end.dateTime}<br/>
+          <hr/>
+        </li>
+      ))}
+    </ul>
+  )}
+  </div>   
+  
+ 
+    </>
   )
 }
 export default GetEvents;
