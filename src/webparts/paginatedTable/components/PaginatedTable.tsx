@@ -12,7 +12,7 @@ const PaginatedTable :React.FC <IPaginatedTableProps>=(props)=>{
 
   React.useEffect(()=>{
 sp.setup({
-  spfxContext:props.context
+  spfxContext:props.context as any
 });
 sp.web.lists.getByTitle(props.ListName).items.select('Title','EmailAddress','Age').get().then((data)=>{
   const formattedItems=data.map((item)=>({

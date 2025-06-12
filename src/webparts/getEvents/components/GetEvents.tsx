@@ -15,7 +15,7 @@ interface IEvent{
   end:{
     dateTime:string;
   }
-}
+} //
 const GetEvents:React.FC<IGetEventsProps>=(props)=>{
   const[myEvents,setMyEvents]=React.useState<IEvent[]>([]);
   const[loading,setLoading]=React.useState<boolean>(true);

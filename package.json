@@ -16,16 +16,20 @@
     "@microsoft/microsoft-graph-types": "^2.40.0",
     "@microsoft/sp-component-base": "1.20.0",
     "@microsoft/sp-core-library": "1.20.0",
+    "@microsoft/sp-dialog": "^1.21.1",
     "@microsoft/sp-lodash-subset": "1.20.0",
     "@microsoft/sp-office-ui-fabric-core": "1.20.0",
     "@microsoft/sp-property-pane": "1.20.0",
     "@microsoft/sp-webpart-base": "1.20.0",
     "@pnp/graph": "^4.13.0",
     "@pnp/sp": "^2.0.5",
+    "@pnp/spfx-controls-react": "^3.21.0",
     "antd": "^5.25.4",
+    "formik": "^2.4.6",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "tslib": "2.3.1"
+    "tslib": "2.3.1",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@microsoft/eslint-config-spfx": "1.20.2",
