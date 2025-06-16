@@ -8,6 +8,17 @@
   &.teams {
     font-family: $ms-font-family-fallbacks;
   }
+  .lblForm{
+    font-weight: bold;
+    color: "[theme:bodyText, default: #323130]";
+    color: var(--bodyText);
+    margin: 5px 0px 5px 0px;
+    font-size: 15px;
+  }
+  .btnsForm{
+    margin-left: 10px;
+    margin-top: 10px;
+  }
 }
 
 .welcome {

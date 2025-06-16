@@ -1,16 +1,17 @@
 import * as React from 'react';
-// import styles from './FormValidation.module.scss';
+import styles from './FormValidation.module.scss';
 import type { IFormValidationProps } from './IFormValidationProps';
 import { FormikServiceClass } from '../../../FormikService/formikservice';
-import { IFormValidationState } from './IFormValidationState';
+// import { IFormValidationState } from './IFormValidationState';
 import {PeoplePicker,PrincipalType} from "@pnp/spfx-controls-react/lib/PeoplePicker";
 import { sp } from '@pnp/sp';
 import * as yup from 'yup';
 import { Formik,FormikProps} from
 'formik';
 import { Dialog } from '@microsoft/sp-dialog';
-import { Label, Stack, TextField } from '@fluentui/react';
-import { Dropdown } from 'antd';
+import { Label, Stack, TextField,Dropdown, DatePicker, PrimaryButton} from
+'@fluentui/react';
+// import { Dropdown } from 'antd';
 const stackTokens={
   childrenGap:20
 }
@@ -28,7 +29,7 @@ const  FormValidation:React.FC<IFormValidationProps>=(props)=>{
   const _validate=yup.object().shape({
 name:yup.string().required("Task Name is required"),
 details:yup.string().min(15,"Minimum 15 characters are required").required("Task details is required"),
-startdDate:yup.date().required("Start Date is required"),
+startdDate:yup.date().required("Start Date is required")||null,
 endDate:yup.date().required("End Date is required"),
 projectName:yup.string().required("Project Name is required"),
 
@@ -79,9 +80,12 @@ projectName:yup.string().required("Project Name is required"),
   (
     formik:FormikProps<any>
   )=>(
-    <div>
+    <form onSubmit={formik.handleSubmit}>
+    <div className={styles.formValidation}>
 <Stack tokens={stackTokens}>
-  <Label>
+  <Label className={styles.lblForm}>
+    User Name
+    </Label>
 
     <PeoplePicker
     context={props.context as any}
@@ -92,9 +96,9 @@ projectName:yup.string().required("Project Name is required"),
     disabled={true}
     principalTypes={[PrincipalType.User]}
     />
-  </Label>
+  
 
-  <Label>
+  <Label className={styles.lblForm}>
     Task Name
   </Label>
   <TextField
@@ -102,20 +106,63 @@ projectName:yup.string().required("Project Name is required"),
     ...getFieldProps(formik,'name')
   }
   />
-  <Label>
+  <Label className={styles.lblForm}>
     Project Name
   </Label>
   <Dropdown
-  
+  options={
+    [
+      {key:"Task  1",text:"Task 1"},
+       {key:"Task  1",text:"Task 1"},
+        {key:"Task  1",text:"Task 1"},
+
+    ]
+  }
+    selectedKey={formik.values.projectName}
+    onChange={(event,options)=>formik.setFieldValue('projectName',options?.key)}
+    errorMessage={formik.errors.projectName as string}
+
   />
+  <Label className={styles.lblForm}>Start Date</Label>
+  <DatePicker 
+  id="startDate"
+  value={formik.values.startDate}
+  textField={{ ...getFieldProps(formik,'startDate') }}
+  onSelectDate={(date)=>formik.setFieldValue('startDate',date)}
+  />
+   <Label className={styles.lblForm}>End Date</Label>
+  <DatePicker 
+  id="endDate"
+  value={formik.values.endDate}
+  textField={{ ...getFieldProps(formik,'endDate') }}
+  onSelectDate={(date)=>formik.setFieldValue('endDate',date)}
+  />
+<Label className={styles.lblForm}>Task Details</Label>
+<TextField
+multiline
+rows={5}
+
+{...getFieldProps(formik,'details')}/>
 </Stack>
+<PrimaryButton className={styles.btnsForm}
+type='submit'
+text='Save'
+iconProps={{iconName:'Save'}}
+// onClick={formik.handleSubmit as any}
+/>
+<PrimaryButton className={styles.btnsForm}
+text='Cancel'
+iconProps={{iconName:'Cancel'}}
+onClick={formik.resetForm as any}
+/>
     </div>
+    </form>
   )
 }
 
     </Formik>
     
     </>
-  )
+  );
 }
 export default  FormValidation;
